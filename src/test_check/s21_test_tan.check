@@ -1,0 +1,14 @@
+#test s21_test_tan
+
+  for (double i = -20.0 * PI; i <= 20.0 * PI; i += PI*2) {
+    ck_assert_double_eq_tol(s21_tan(i), tan(i), s21_EPS_test);
+    };
+
+    double a = 0;
+    double b = POS_INF;
+    double c = s21_NAN;
+
+    ck_assert_double_eq(s21_tan(a), tan(a));
+    ck_assert_ldouble_nan(s21_tan(b));
+    ck_assert_ldouble_nan(s21_tan(c));
+    //ok

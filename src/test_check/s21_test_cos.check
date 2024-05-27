@@ -1,0 +1,14 @@
+#test s21_test_cos
+
+  for (double i = -20.0 * PI; i <= 20.0 * PI; i += PI / 4) {
+    ck_assert_double_eq_tol(s21_cos(i), cos(i), s21_EPS_test);
+    };
+
+    double a = 0;
+    double b = POS_INF;
+    double c = s21_NAN;
+
+    ck_assert_double_eq(s21_cos(a), cos(a));
+    ck_assert_ldouble_nan(s21_cos(b));
+    ck_assert_ldouble_nan(s21_cos(c));
+    //ok

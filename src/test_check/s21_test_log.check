@@ -1,0 +1,39 @@
+#test s21_test_log
+    for (double i = -2; i < 100; i += PI/3) {
+        if (i > 0) {
+        double noeq = (double)(log(i) - s21_log(i));
+        ck_assert_ldouble_le(fabs(noeq), s21_EPS_test);
+        } else {
+        ck_assert_ldouble_nan(s21_log(i));
+        }
+    }
+
+    ck_assert_ldouble_eq(log(0), s21_log(0));
+
+    double noeq = (double)(log(1) - s21_log(1));
+    ck_assert_ldouble_le(fabs(noeq), s21_EPS_test);
+
+    double noeq1 = (double)(log(1000) - s21_log(1000));
+    ck_assert_ldouble_le(fabs(noeq1), s21_EPS_test);
+
+        
+    double d = 1234567.39393939939;
+    double e = -1234567.39393993939;
+    double f = 0.123456789012345678;
+    double g = -0.123456789012345678;
+
+    ck_assert_double_eq_tol(s21_log(d), log(d), s21_EPS_test);
+    ck_assert_ldouble_nan(s21_log(e));
+    ck_assert_double_eq_tol(s21_log(f), log(f), s21_EPS_test);
+    ck_assert_ldouble_nan(s21_log(g));
+        
+        
+        double a = 0;
+        double b = POS_INF;
+        double c = s21_NAN;
+
+        ck_assert_double_eq(s21_log(a), log(a));
+        ck_assert_double_eq(s21_log(b), log(b));
+        ck_assert_ldouble_infinite(s21_log(b));
+        ck_assert_ldouble_nan(s21_log(c));
+    //ok

@@ -1,0 +1,25 @@
+#test s21_test_pow
+  for (double i = 1; i < 5.; i += 0.5) {
+    //printf ("i = %lf\n", i);
+    for (double j = -10.; j < 10; j += 0.5) {
+      //printf ("j = %lf\n", j);
+      double noeq = (double)(pow(i, j) - s21_pow(i, j));
+      ck_assert_double_le(fabs(noeq), s21_EPS_test);
+    }
+  }
+
+    double a = 0;
+    double b = POS_INF;
+    double c = s21_NAN;
+    double d = NEG_INF;
+
+    ck_assert_double_eq(s21_pow(a,b), pow(a,b));
+    ck_assert_double_eq(s21_pow(b,a), pow(b,a));
+    ck_assert_double_eq(s21_pow(c,a), pow(c,a));
+    ck_assert_ldouble_nan(s21_pow(b,c));
+    ck_assert_ldouble_nan(s21_pow(c,b));
+    ck_assert_ldouble_nan(s21_pow(a,c));
+    ck_assert_double_eq(s21_pow(d,3), pow(d,3));
+    ck_assert_double_eq(s21_pow(d,-3), pow(d,-3));
+    ck_assert_double_eq(s21_pow(-3,-3), pow(-3,-3));
+    //ok

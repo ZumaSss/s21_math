@@ -1,0 +1,2 @@
+#main-pre
+    tcase_set_timeout(tc1_1, 7);

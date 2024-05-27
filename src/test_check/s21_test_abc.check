@@ -1,0 +1,17 @@
+#test s21_test_abc
+    for (int f = -1111; f < 1111; f++) {
+        ck_assert_int_eq(abs(f), s21_abs(f));
+    }
+
+    int a = 0;
+    int b = 1234567;
+    int c = -1234567;
+    int d = POS_INF;
+    int e = s21_NAN;
+
+    ck_assert_int_eq(s21_abs(a), abs(a));
+    ck_assert_int_eq(s21_abs(b), abs(b));
+    ck_assert_int_eq(s21_abs(c), abs(c));
+    ck_assert_int_eq(s21_abs(d), abs(d));
+    ck_assert_int_eq(s21_abs(e), abs(e));
+    //ok

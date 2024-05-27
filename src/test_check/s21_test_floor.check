@@ -1,0 +1,20 @@
+#test s21_test_floor
+    for (double f = -111; f < 1111; f += PI * 3) {
+        ck_assert_ldouble_eq(floor(f), s21_floor(f));
+    }
+    double a = 0;
+    double b = 1234567.39393939939;
+    double c = -1234567.39393993939;
+    double d = POS_INF;
+    double e = s21_NAN;
+    double f = 0.123456789012345678;
+    double g = -0.123456789012345678;
+
+    ck_assert_double_eq(s21_floor(a), floor(a));
+    ck_assert_double_eq(s21_floor(b), floor(b));
+    ck_assert_double_eq(s21_floor(c), floor(c));
+    ck_assert_double_eq(s21_floor(d), floor(d));
+    ck_assert_ldouble_nan(s21_floor(e));
+    ck_assert_double_eq(s21_floor(f), floor(f));
+    ck_assert_double_eq(s21_floor(g), floor(g));
+    //ok

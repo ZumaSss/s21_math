@@ -1,0 +1,19 @@
+#test s21_test_asin
+    for (double i = -20.0 * PI; i <= 20.0 * PI; i += PI / 4) {
+        if (s21_asin(i) != s21_asin(i) && asin(i) != asin(i))
+            {ck_assert_ldouble_nan(s21_asin(i));}
+        else {
+            ck_assert_double_eq_tol(s21_asin(i), asin(i), s21_EPS_test);
+        }
+    };
+
+    double a = 0;
+    double b = POS_INF;
+    double c = s21_NAN;
+    //double d = -1;
+
+    ck_assert_double_eq(s21_asin(a), asin(a));
+    ck_assert_ldouble_nan(s21_asin(b));
+    ck_assert_ldouble_nan(s21_asin(c));
+    //ck_assert_double_eq(s21_asin(d), asin(d));
+    //ok
